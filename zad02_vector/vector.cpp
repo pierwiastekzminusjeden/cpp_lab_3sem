@@ -24,8 +24,8 @@ int newsz(int sz) {
 
 
 int main() {
-  struct Ext vec1;
-  struct Ext vec2;
+  struct Ext vec1; //LIN
+  struct Ext vec2; //EXP
   init(&vec1);
   init_with_size_and_policy(&vec2, 2, newsz);
   
