@@ -1,12 +1,15 @@
 #ifndef ext_h
 #define ext_h
+
 /**
 *struktura @Ext przechowuje podstawowe dane na tema v=wektora integerów. Wskaznik na tablice
     alokowaną dynamicznie. Początkowy rozmiar oraz polityke przydzielania pamieci
 */
 struct Ext{
-    int policy; //rozszerzanie pamieci
-    int startSize;
+    int startSize; //rozszerzanie pamieci
+    int policy;
+    int (*funPolicy)(int x);
+    int size;
     int *tab;
 };
 /**
@@ -14,7 +17,7 @@ struct Ext{
 */
 void init(Ext *vec);
 
-void init_with_size_and_policy(Ext *vec, int startSize , int (*fun)(int) );
+void init_with_size_and_policy(Ext *vec, int start , int (*fun)(int) );
 
 void insert(Ext *vec, int value);
 
