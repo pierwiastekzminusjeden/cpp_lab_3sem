@@ -1,5 +1,7 @@
 #include "ext.h"
 #include <cstdlib>
+#include <iostream>
+#include <cstring>
 
 
 void init(Ext *vec){ 
@@ -46,27 +48,34 @@ int capacity(Ext *vec){
 }
 
 int at(Ext *vec, int value){
-
     return vec->tab[value];
 }
 
-void for_each_element(Ext *vec, void (*fun)(Ext *)){
-
-} //nie jestem pewien drugiego argumentu
+void for_each_element(Ext *vec, void (*fun)(int *)){
+    for(int i=0; i < vec->size; i++)
+        fun(&(vec->tab[i]));
+}
 
 Ext *clone(Ext *vec){
-
-    return 0;
+    Ext vecClone;
+    vecClone.startSize = vec->startSize;
+    vecClone.size = vec->size;
+    vecClone.funPolicy = vec->funPolicy;
+    vecClone.policy = vec->policy;
+    vecClone.tab = (int *)malloc(vecClone.size * sizeof(int) );
+    memcpy(vecClone.tab, vec->tab, vecClone.size);
+    
+    return &vecClone;
 }
 
 void clear(Ext *vec){
-
+    free(vec->tab);
 }
 
-void print(Ext *vec){
-
+void print(int *x){
+    std::cout << *x << " ";
 }
 
-void zero(Ext *vec){
-
+void zero(int *x){
+    *x=0;
 }

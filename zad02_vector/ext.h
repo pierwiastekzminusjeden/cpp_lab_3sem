@@ -27,14 +27,14 @@ int capacity(Ext *vec);
 
 int at(Ext *vec, int value);
 
-void for_each_element(Ext *vec, void (*fun)(Ext *)); //nie jestem pewien drugiego argumentu
+void for_each_element(Ext *vec, void (*fun)(int *)); //nie jestem pewien drugiego argumentu
 
 Ext *clone(Ext *vec);
 
 void clear(Ext *vec);
 
-void print(Ext *vec);
+void print(int *x);
 
-void zero(Ext *vec);
+void zero(int *x);
 
 #endif
