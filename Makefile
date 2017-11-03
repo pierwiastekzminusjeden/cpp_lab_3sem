@@ -1,9 +1,9 @@
 CXX=clang++
 CXXFLAGS=-g -Wall
 CXXFLAGS+=-pedantic
-MAIN=vector
-HEADER=ext
-SOURCE=ext
+MAIN=Lab02
+HEADER=Lab02
+SOURCE=fun
 OUTPUT=test
 
 $(OUTPUT): $(MAIN).o $(SOURCE).o
