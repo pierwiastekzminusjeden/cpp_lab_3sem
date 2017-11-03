@@ -8,7 +8,7 @@
 struct Ext{
     int startSize; //rozszerzanie pamieci
     int policy;
-    int (*funPolicy)(int x);
+    int (*funPolicy)(int);
     int size;
     int *tab;
 };
