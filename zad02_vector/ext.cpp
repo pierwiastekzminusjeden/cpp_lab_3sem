@@ -53,19 +53,22 @@ int at(Ext *vec, int value){
 
 void for_each_element(Ext *vec, void (*fun)(int *)){
     for(int i=0; i < vec->size; i++)
-        fun(&(vec->tab[i]));
+       fun(&(vec->tab[i]));
 }
 
 Ext *clone(Ext *vec){
-    Ext vecClone;
-    vecClone.startSize = vec->startSize;
+   /*       JAKIE TRIKI ZADANIE
+    Ext vecClone = *vec;  //lol
+    vecClone.startSize = vec->startSize;        //tak tez nie
     vecClone.size = vec->size;
     vecClone.funPolicy = vec->funPolicy;
     vecClone.policy = vec->policy;
-    vecClone.tab = (int *)malloc(vecClone.size * sizeof(int) );
-    memcpy(vecClone.tab, vec->tab, vecClone.size);
-    
-    return &vecClone;
+    vecClone.tab = (int *)malloc(vecClone.policy * sizeof(int) );
+    for(int i=0; i<vecClone.size; i++){
+        vecClone.tab[i] = vec->tab[i];
+    }           NIE MOGE Z TEGO TRIKI ZADANIA, TEN BLOK DO USUNIECIA
+    */
+    return vec;
 }
 
 void clear(Ext *vec){
