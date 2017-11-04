@@ -6,9 +6,9 @@
 
 void init(Ext *vec){ 
     vec->startSize = 5;
-    vec->size = 0;          //brak zmiennej na poczatkowy rozmiar, vec->size rozmiar
+    vec->size = 0;
     vec->funPolicy = NULL;
-    vec->policy=vec->size + vec->startSize; //dopracowac, o 5 wiecej, vec->policy pojemnosc
+    vec->policy=vec->size + vec->startSize; 
     vec->tab=(int *)malloc(vec->startSize * sizeof(int));
 }
 
@@ -16,7 +16,7 @@ void init_with_size_and_policy(Ext *vec, int start , int (*fun)(int) ){
     vec->startSize = start;
     vec->size = 0;
     vec->funPolicy = fun;
-    vec->policy = 2; ;         //tu jebnie
+    vec->policy = 2; ;         
     vec->tab=(int *)malloc(vec->startSize * sizeof(int));
 }
 
