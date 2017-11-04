@@ -57,8 +57,8 @@ void for_each_element(Ext *vec, void (*fun)(int *)){
 }
 
 Ext *clone(Ext *vec){
-    Ext *vecClone = new Ext;  //lol
-    vecClone->startSize = vec->startSize;        //tak tez nie
+    Ext *vecClone = new Ext;
+    vecClone->startSize = vec->startSize;        
     vecClone->size = vec->size;
     vecClone->funPolicy = vec->funPolicy;
     vecClone->policy = vec->policy;
