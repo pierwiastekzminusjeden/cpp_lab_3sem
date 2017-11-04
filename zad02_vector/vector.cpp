@@ -49,7 +49,7 @@ int main() {
   clear(&vec1);
   clear(&vec2);
   clear(vec3);
- // delete vec3;
+  delete vec3;    //vec3 nie jest alokowane dynamicznie
 }
 /* wynik dzialania
 rozmiar Lin 1 Exp 1 pojemosc Lin 5 Exp 2
