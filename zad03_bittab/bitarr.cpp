@@ -2,7 +2,8 @@
 #include "bitarr.h"
 
 void set_size(Bitarr *bit, const unsigned nbits){
-
+    tab->numberOfBits = nbits;
+    bit->tab = (char *)malloc(tab->numberOfBits / 8 * sizeof(char));
 }
 
 void fill_pattern(Bitarr *bit, const char *pattern){
@@ -27,5 +28,5 @@ void xor_and_set(Bitarr *bit2, const Bitarr *bitPtr, Bitarr *bit1){
 }
 
 void clear(Bitarr *bit){
-
+    free(bit->tab);
 }

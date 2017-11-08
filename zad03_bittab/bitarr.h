@@ -2,6 +2,8 @@
 #define BITARR_H
 
 struct Bitarr{
+char *tab;
+int numberOfBits;
 
 };
 
