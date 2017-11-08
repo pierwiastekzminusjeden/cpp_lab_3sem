@@ -2,8 +2,10 @@
 #define TAB_H
 
 struct Tab{
-
-
+    int *arr;
+    int sep;
+    int numberOfCollumns;
+    int numberOfRows;
 };
 
 struct TabRange{
@@ -16,7 +18,7 @@ int k2;
 };
 
 
-void init(Tab *tab, int Ox, int Oy,  int value);
+void init(Tab *tab, int collumns, int rows,  int value);
 
 void diag(Tab *tab, int value);
 
