@@ -2,63 +2,68 @@
 #include <cstdlib>
 #include "tab.h"
 
+//dane sa wczytywane w odwrotnej kolejnosci niz zwykle w tablicach dwuwym
+void init(Tab *tab, int collumns, int rows, int value){ 
 
-void init(Tab *tab, int collumns, int rows,  int value){    
-  tab->arr = (int *)malloc(collumns * rows *sizeof(int));
- // odpowiednia tablica jednowymiarowa
-  tab->sep = collumns;  //(*tab[9]=tab[6][3])
+  tab->fullSize = collumns * rows ;     
+  tab->arr = (int *)malloc(tab->fullSize * sizeof(int));
+  tab->skip = collumns;                                 // wartosc przeskoku do kolejnego wiersza = ilosci kolumn zmienna dla wygody
   tab->numberOfCollumns = collumns;
-  tab->numberOfRows = rows;                        //tab[6]=tab[1][0]
-  for(int i = 0; i < collumns * rows; i++)
+  tab->numberOfRows = rows;                        
+  for(int i = 0; i < tab->fullSize; i++)
     tab->arr[i] = value;
 }
 
 void diag(Tab *tab, int value){
+
   for(int i=0; i< tab->numberOfRows; i++)
-      tab->arr[i*tab->sep + i] = value ;
+      tab->arr[i * tab->skip + i] = value ;
 }
 
 void set(Tab *tab, int collumn, int row, int value){
-  if(collumn >= tab->numberOfCollumns || row >= tab->numberOfRows)
+
+  if(collumn >= tab->numberOfCollumns || row >= tab->numberOfRows || collumn <=0 || row <=0)
     return;
   else
-    tab->arr[tab->sep * row + collumn] = value;
+    tab->arr[row * tab->skip + collumn] = value;
 }
 
 void set_part(Tab *tab, TabRange range, int value){
   
-  for(int j = range.y1; j < range.y2; j++){
-    for(int i = range.x1 ; i < range.x2; i++)
-      tab->arr[j*tab->sep + i] = value;
+  for(int i = range.row1; i < range.row2; i++){
+    for(int j = range.collumn1 ; j < range.collumn2; j++)
+      tab->arr[i*tab->skip + j] = value;
   }
-
 }
 
 void print(Tab *tab){
-  int separate=0; //zmienna pomocnicza
 
-  for(int i=0; i<tab->numberOfCollumns * tab->numberOfRows ; i++){
-    if(separate % tab->sep == 0)
+  int position=0; //zmienna pomocnicza
+
+  for(int i=0; i < tab->fullSize ; i++){
+    if(position % tab->skip == 0)
       std::cout << "| ";
 
     std::cout << tab->arr[i] << " ";
 
-    if(separate++ != 0 && separate % tab->sep == 0)
+    if(++position % tab->skip == 0)
       std::cout << "|"<< std::endl;
   }
 }
 
 Tab *extract(Tab *tab, TabRange range){
-  Tab *newTab = new Tab;
-  newTab->numberOfCollumns = (range.x2 - range.x1);
-  newTab->numberOfRows = (range.y2 - range.y1);
-  newTab->sep = newTab->numberOfCollumns;
-  newTab->arr = (int *)malloc(newTab->numberOfCollumns * newTab->numberOfRows * sizeof(int));
   
-  int k=0;
-  for(int j = range.y1; j < range.y2; j++){
-    for( int i = range.x1 ; i < range.x2; i++)
-      newTab->arr[k++] =tab->arr[j*tab->sep + i];
+  Tab *newTab = new Tab;
+  newTab->numberOfCollumns = (range.collumn2 - range.collumn1);
+  newTab->numberOfRows = (range.row2 - range.row1);
+  newTab->skip = newTab->numberOfCollumns;
+  newTab->fullSize = newTab->numberOfCollumns * newTab->numberOfRows ;
+  newTab->arr = (int *)malloc(newTab->fullSize * sizeof(int));
+  
+  int k=0;                                    //zmienna pomocnicza indeksujaca nowa tablice
+  for(int i = range.row1; i < range.row2; i++){
+    for( int j = range.collumn1 ; j < range.collumn2; j++)
+      newTab->arr[k++] =tab->arr[i*tab->skip + j];
   }
   return newTab;
 }

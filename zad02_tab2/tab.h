@@ -2,18 +2,19 @@
 #define TAB_H
 
 struct Tab{
+    int fullSize;
     int *arr;
-    int sep;
+    int skip;
     int numberOfCollumns;
     int numberOfRows;
 };
 
 struct TabRange{
-int x1;
-int y1;
+int collumn1;
+int row1;
 
-int x2;
-int y2;
+int collumn2;
+int row2;
 };
 
 

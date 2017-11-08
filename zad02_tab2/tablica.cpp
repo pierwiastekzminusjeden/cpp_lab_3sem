@@ -40,7 +40,7 @@ int main() {
   init(&t2, 3, 7, 2.);
   set(&t2, 2, 2, 4.);
   print (&t2);
-
+  
   cout << "wycinamy srodek (asymetrycznie) jako nowa tablice" << endl;
   TabRange center = {0,2, 6,4};  
   Tab* c = extract(&t, center);
@@ -52,6 +52,7 @@ int main() {
   cout << "po operacji clean tablica jest pusta (ale mozna na niej wykonac print)" << endl;
   print(&t);
   // brak wyciekow pamieci
+
 }
 /* Wynik
 | 3 0 0 0 0 0 0 |
@@ -73,5 +74,4 @@ wycinamy srodek (asymetrycznie) jako nowa tablice
 | 0 9 9 0 0 0 |
 | 0 0 0 3 0 0 |
 po operacji clean tablica jest pusta (ale mozna na niej wykonac print)
-
- */
+*/
