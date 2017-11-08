@@ -9,12 +9,11 @@ struct Tab{
 };
 
 struct TabRange{
-int w1;
-int k1;
-int w2;
-int k2;
+int x1;
+int y1;
 
-
+int x2;
+int y2;
 };
 
 
@@ -24,11 +23,11 @@ void diag(Tab *tab, int value);
 
 void set(Tab *tab, int Ox, int Oy, int value);
 
-void set_part(Tab *tab, TabRange tabRange, int value);
+void set_part(Tab *tab, TabRange range, int value);
 
 void print(Tab *tab);
 
-Tab *extract(Tab *tab, TabRange tabRange);
+Tab *extract(Tab *tab, TabRange range);
 
 void clean(Tab *tab);
 

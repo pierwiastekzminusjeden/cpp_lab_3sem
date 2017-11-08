@@ -25,30 +25,44 @@ void set(Tab *tab, int collumn, int row, int value){
     tab->arr[tab->sep * row + collumn] = value;
 }
 
-void set_part(Tab *tab, TabRange tabRange, int value){
+void set_part(Tab *tab, TabRange range, int value){
+  
+  for(int j = range.y1; j < range.y2; j++){
+    for(int i = range.x1 ; i < range.x2; i++)
+      tab->arr[j*tab->sep + i] = value;
+  }
 
 }
 
 void print(Tab *tab){
-  int separate=0;
-  std::cout << "| ";
+  int separate=0; //zmienna pomocnicza
 
   for(int i=0; i<tab->numberOfCollumns * tab->numberOfRows ; i++){
-    td::cout << tab->arr[i] << " ";
-    if(separate++ != 0 && separate % tab->sep == 0){
-      std::cout << "|"<< std::endl;
+    if(separate % tab->sep == 0)
       std::cout << "| ";
-    }
-//   poprawić kreske w nowej lini na koncu
+
+    std::cout << tab->arr[i] << " ";
+
+    if(separate++ != 0 && separate % tab->sep == 0)
+      std::cout << "|"<< std::endl;
   }
-  
 }
 
-Tab *extract(Tab *tab, TabRange tabRange){
-   
-   return tab;
+Tab *extract(Tab *tab, TabRange range){
+  Tab *newTab = new Tab;
+  newTab->numberOfCollumns = (range.x2 - range.x1);
+  newTab->numberOfRows = (range.y2 - range.y1);
+  newTab->sep = newTab->numberOfCollumns;
+  newTab->arr = (int *)malloc(newTab->numberOfCollumns * newTab->numberOfRows * sizeof(int));
+  
+  int k=0;
+  for(int j = range.y1; j < range.y2; j++){
+    for( int i = range.x1 ; i < range.x2; i++)
+      newTab->arr[k++] =tab->arr[j*tab->sep + i];
+  }
+  return newTab;
 }
 
 void clean(Tab *tab){
-
+  free(tab->arr);
 }
