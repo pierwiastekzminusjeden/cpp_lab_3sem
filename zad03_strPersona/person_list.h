@@ -8,16 +8,13 @@ struct Person{
 };
 
 struct person_list{
-    Person *person;
-    Person *start;
-    int numberOfElements;
+    Person *data;
 };
 
 struct person_list_iter{
      char *name;
      char *family;
-
-
+     Person *next;
 };
 
 void init_person_list(person_list *list);

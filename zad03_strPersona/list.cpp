@@ -42,14 +42,14 @@ int main() {
   strcpy(buffer_name, "Agnieszka-Maria"), strcpy(buffer_family, "Kawalerowicz-Rottensteinberger");
   add_person(&plist,  buffer_name, buffer_family);
 /*
-  person_list_iter iter  = get_iterator(&plist);
+  person_list_iter iter  = get_iterator(&plist);  //o co chodzi?
   while ( is_valid(iter) ) {
     cout << iter->name << " " << iter->family << endl;
     move_to_next(&iter);
   }
-  
+ */
   clean(&plist);
-*/
+
 }
 
 /* wynik 
