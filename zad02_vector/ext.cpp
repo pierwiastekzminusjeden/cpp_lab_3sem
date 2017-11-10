@@ -16,7 +16,7 @@ void init_with_size_and_policy(Ext *vec, int start , int (*fun)(int) ){
     vec->startSize = start;
     vec->size = 0;
     vec->funPolicy = fun;
-    vec->policy = 2; ;         
+    vec->policy = start;         
     vec->tab=(int *)malloc(vec->startSize * sizeof(int));
 }
 

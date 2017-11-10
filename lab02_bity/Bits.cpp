@@ -5,8 +5,8 @@
 
 void set_size(Bits *str, int length){
     str->size=length;
-  //  for(int i = 0; i < 5; i++)
-   //     str->bits[i] = 0;
+    for(int i = 0; i < 5; i++)
+        str->bits[i] = 0;
         
 }
 
@@ -18,11 +18,11 @@ int set_bit(Bits *str, int position, int value){
 
     int posInCell = position % (sizeof(char) * 8); //pozycja bitu względem pozycji w komorce
 
-    if(value)
+    if(value == 1)
         str->bits[posInArray] = str->bits[posInArray] | (1 << posInCell ); //wstawienie 1 przekminic
 
     else
-        str->bits[posInArray] = str->bits[posInArray] & (char)~(1 << posInCell); // co?
+        str->bits[posInArray] = str->bits[posInArray] & (char)~(1 << posInCell); // co? to jest ustawienie na zero po chuj
          
     return 0;
 }
@@ -34,7 +34,6 @@ void print_bits(Bits *str){      //co?
             std::cout << " ";
         std::cout << get_bit(str, i);
     }
-    
     std::cout << std::endl;	
 }
 
@@ -46,8 +45,7 @@ int get_bit(Bits *str, int position){
 
         int posInCell = position % (sizeof(char) * 8);
 
-
-    return (str->bits[posInArray] & (1 << posInCell !=0));
+    return (str->bits[posInArray] & (1 << posInCell)) != 0;
 }
 
 void clear_bits(Bits *str){

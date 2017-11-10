@@ -4,6 +4,7 @@
 struct Bitarr{
 char *tab;
 int numberOfBits;
+int numberOfCells;
 
 };
 

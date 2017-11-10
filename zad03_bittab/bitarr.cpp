@@ -1,13 +1,25 @@
 #include <iostream>
+#include <cstdlib>
 #include "bitarr.h"
 
 void set_size(Bitarr *bit, const unsigned nbits){
-    tab->numberOfBits = nbits;
-    bit->tab = (char *)malloc(tab->numberOfBits / 8 * sizeof(char));
+    bit->numberOfBits = nbits;
+    bit->numberOfCells = bit->numberOfBits / 8 * sizeof(char);
+    bit->tab = (char *)malloc(bit->numberOfCells);
 }
 
 void fill_pattern(Bitarr *bit, const char *pattern){
-
+    int k=0;
+    for(int i=bit->numberOfCells -1; i >= 0; i++){
+        for(int j=0 ; j<bit->numberOfBits; j++){
+            if(pattern[k++]== '0')
+                bit->tab[i] = bit->tab[i] & (char)~(1 << bit->numberOfBits);
+            else if(pattern[k] == '1')
+                bit->tab[i] = bit->tab[i] | (char) (1 << bit->numberOfBits);
+            else if(pattern[k]=='\0')
+                k=0;
+        }
+    }
 }
 
 void print_bitarray(Bitarr *bit){
