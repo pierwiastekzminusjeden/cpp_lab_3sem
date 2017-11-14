@@ -49,14 +49,28 @@ int capacity(Rope *list){
 }
 
 void iterate_over_elements(Rope *list, int (*fun)(unsigned, int )){
-
+    Rope *head = list;
+    int numberOfNodes=0;
+    while(head != NULL){
+        for(int i = 0; i < head->arrSize; i++){
+            head->arr[i] = fun(numberOfNodes * head->arrSize + i, head->arr[i]) ;  
+        }
+        head = head->next;
+        numberOfNodes++;
+    }
 }
 
 void clear(Rope *list){
-
+    Rope *toDel = NULL;
+    while(list != NULL){
+        toDel = list;
+        list = list->next;
+        delete [] toDel->arr;
+        delete toDel;
+    }
 }
 
 int print(unsigned index, int x){
-
-    return 0;
+    std::cout << index << "[" << x << "] ";
+    return x;
 }
