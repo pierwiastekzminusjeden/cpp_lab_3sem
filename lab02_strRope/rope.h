@@ -2,10 +2,9 @@
 #define ROPE_H
 
 struct Rope{
-    int numberOfNodes;
-    int sizeOfArr;
+    int arrIter;
+    int arrSize;
     int *arr;
-
     Rope *next;
 };
 
