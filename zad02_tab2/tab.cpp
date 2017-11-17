@@ -22,7 +22,7 @@ void diag(Tab *tab, int value){
 
 void set(Tab *tab, int collumn, int row, int value){
 
-  if(collumn >= tab->numberOfCollumns || row >= tab->numberOfRows || collumn <=0 || row <=0)
+  if(collumn >= tab->numberOfCollumns || row >= tab->numberOfRows || collumn <= 0 || row <= 0)
     return;
   else
     tab->arr[row * tab->skip + collumn] = value;

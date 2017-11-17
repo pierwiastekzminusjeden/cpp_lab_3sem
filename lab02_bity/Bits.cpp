@@ -7,30 +7,27 @@ void set_size(Bits *str, int length){
     str->size=length;
     for(int i = 0; i < 5; i++)
         str->bits[i] = 0;
-        
 }
 
 int set_bit(Bits *str, int position, int value){
+    
     if(position >= str->size)
         return -1;
     
-    int posInArray = position / (sizeof(char) * 8); //indeks do którego należy bit o zadanej pozycji w tablicy
-
-    int posInCell = position % (sizeof(char) * 8); //pozycja bitu względem pozycji w komorce
+    int posInArray = position / (sizeof(char) * 8); 
+    int posInCell = position % (sizeof(char) * 8); 
 
     if(value == 1)
-        str->bits[posInArray] = str->bits[posInArray] | (1 << posInCell ); //wstawienie 1 przekminic
-
+        str->bits[posInArray] = str->bits[posInArray] | (char)(1 << posInCell); 
     else
-        str->bits[posInArray] = str->bits[posInArray] & (char)~(1 << posInCell); // co? to jest ustawienie na zero po chuj
-         
+        str->bits[posInArray] = str->bits[posInArray] & (char)~(1 << posInCell); 
     return 0;
 }
 
 void print_bits(Bits *str){      //co?
-    int start = str->size-1;
-	for (int i = start; i>=0; -- i){
-		if ((i!=start) && ((i+1)%8)==0)
+    int writeStart = str->size-1;
+	for (int i = writeStart; i>=0; -- i){
+		if (( i != writeStart) && ((i + 1)%8) == 0)
             std::cout << " ";
         std::cout << get_bit(str, i);
     }

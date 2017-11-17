@@ -18,6 +18,7 @@ void insert(Rope *list, int value){
         head->arr[(head->arrIter)++] = value;
     
     else{
+        //Rope *node = make_rope(head->arrSize);
         Rope *node = new Rope;
         node->arrIter = 0;
         node->arrSize = list->arrSize;
@@ -32,7 +33,7 @@ int size(Rope *list){
     Rope *head = list;
     int numberOfElements = 0;
     while(head != NULL){
-        numberOfElements += head->arrIter;
+        numberOfElements += head->arrIter;< index << "[" << x << "] ";
         head = head->next;
     }
     return numberOfElements;

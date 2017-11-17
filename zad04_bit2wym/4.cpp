@@ -25,6 +25,7 @@ int main() {
     print(&b1, "b1"); // drukowanie
     clear(&b1); // dealokacja
   }
+  
 
   BitArray b2;
   BitArray b3;
