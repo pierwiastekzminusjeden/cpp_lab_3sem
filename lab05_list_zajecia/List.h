@@ -4,47 +4,42 @@
 #include <cstdlib>
 #include <cstring>
 /**
-*struktura @Element jest pojedynczym wezlem listy. Przechowuje podstawowe informacje o wezle listy (dane oraz wskaznik na nastepne miejsce)
-    Przechowuje wskaznik na lancuch znakowy @data oraz wskaznik 
-    na nastepny wezel. 
+*Struktura @Element jest podstawowym węzłem listy. Przechowuje informacje o położeniu następnego węzła oraz
+    dane.
 */
 struct Element{
     char *data;
     Element *next;
 };
 /**
-*struktura @Element zawiera wskaznik do głowy listy oraz zmienna typu bool
-    @isEmpty przechowujaca informacje czy lista jest pusta.
+*struktura @List zawiera wskaznik do głowy listy. Dostawanie się do listy odbywa się za pomocą tej przekazania do
+    odpowiedniej funkcji stuktury @List.
 */
 struct List{
     Element *head;
 };
 /**
-*funkcja @prepare inicjuje liste i ustawia @list->isEmpty 
-    na wartosc prawdziwa (lista jest pusta).
+*funkcja @prepare inicjuje liste i ustawia wskaznik na głowę listy jako NULL.
 */
 void prepare(List *list);
 /**
-*funkcja @add przyjmuje wskaznik na strukture @List oraz wskaznik na lancuch znakowy
-    @buffor. Dodaje do nowego wezla listy w pole @data struktury @Element
-    lancuch znakowy kopiujac go z @buffor. 
-*Przy dodawaniu pierwszego elementu zmienia wartosc pola @isEmpty ze
-    struktury @List na false.
+*funkcja @add alokuje pamięć na nowy węzeł listy i dodaje element przekazany w 2 argumencie na koniec listy.
+    Kopiuje łańcuch znakowy z argumentu @buffor i dodaje na koniec listy.
 */
 void add(List *list, char *buffor);
 /**
-*funkcja @empty sprawdza czy lista jest pusta. Zwraca wartość pola @isEmpty ze struktury @List.
+*funkcja @empty sprawdza czy lista jest pusta. Zwraca wartosc true jesli jest pusta, false jesli nie.
 */
 bool empty(const List *list);
 /**
 *funkcja @dump wyswietla kolejne wezly listy poczawszy od pierwszego wstawiajac pomiedzy kolejne 
-    ciagi znakow z pol @data struktur @Element spacje.
+    ciagi znakow bedace danymi w liscie spacje. Czyta liste poczawszy od głowy.
 */
 void dump(const List *list);
 /**
-*funkcja @clear zwalnia pamiec zaalokowana w funkcji @add na kolejne elementy listy (@Element)
-    oraz tablice znakowe (@data ze struktury @Element). 
-*Na koncu wywolywana jest funkcja @prepare, ktora inicjuje pusta liste.
+*funkcja @clear zwalnia pamiec zaalokowana w funkcji @add na kolejne elementy listy 
+    oraz tablice znakowe.
+*Po zwolnieniu pamieci inicjowana jest pusta lista.
 */
 void clear(List *list);
 
