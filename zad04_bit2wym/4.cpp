@@ -22,7 +22,7 @@ int main() {
 	set(&b1, r, c, bitValue ); // ustawienie warosci bitu w rzedzie r i kolumnie c
       }
     }
-    print(&b1, "b1"); // drukowanie
+  //  print(&b1, "b1"); // drukowanie
     clear(&b1); // dealokacja
   }
   
@@ -41,16 +41,16 @@ int main() {
     print(&b2, "b2");     
     print(&b3, "b3");     
   }
-  negate(&b2); // zmiana warrosci bitu
-  print(&b2, "b2 po negacji");
-  negate(negate(&b2)); // dzialanie bez efektu
-  print(&b2, "b2 po podwojnej negacji");
+  //negate(&b2); // zmiana warrosci bitu
+ // print(&b2, "b2 po negacji");
+ // negate(negate(&b2)); // dzialanie bez efektu
+ // print(&b2, "b2 po podwojnej negacji");
     
   BitArray b4;
   init(&b4, rows(&b2), cols(&b2)); // nowa czysta tablica o rozmiarach z b2
   
-  xor_arrays(&b4, (BitArray const*)&b3, (BitArray const*)&b2); // operacja xor na bitach
-  print((const BitArray*)&b4, "po operacji XOR");
+//  xor_arrays(&b4, (BitArray const*)&b3, (BitArray const*)&b2); // operacja xor na bitach
+ // print((const BitArray*)&b4, "po operacji XOR");
   
   clear(&b1); // to nie pomylka, clear jest wykonane dwukrotnie na b1
   clear(&b2);
