@@ -3,7 +3,6 @@
 
 void prepare(List *list){
     list->head = NULL;
-    list->isEmpty = true;
 }
 
 void add(List *list, char *buffor){
@@ -12,10 +11,9 @@ void add(List *list, char *buffor){
     strcpy(node->data, buffor); 
     node->next = NULL;
 
-    if(list->isEmpty == true){
+    if(list->head == NULL)
         list->head = node; 
-        list->isEmpty = false;
-    }
+        
     else{
         Element *newHead = list->head;
         while(newHead->next != NULL)
@@ -25,7 +23,10 @@ void add(List *list, char *buffor){
 }
 
 bool empty(const List *list){
-    return list->isEmpty;
+    if(list->head == NULL)
+        return true;
+    else
+        return false;
 }
 
 void dump(const List *list){

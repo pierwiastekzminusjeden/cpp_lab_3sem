@@ -4,8 +4,9 @@
 #include <cstdlib>
 #include <cstring>
 /**
-*struktura @Element jest pojedynczym wezlem listy. Przechowuje wskaznik na lancuch znakowy @data oraz wskaznik 
-    na nastepny wezel @next.
+*struktura @Element jest pojedynczym wezlem listy. Przechowuje podstawowe informacje o wezle listy (dane oraz wskaznik na nastepne miejsce)
+    Przechowuje wskaznik na lancuch znakowy @data oraz wskaznik 
+    na nastepny wezel. 
 */
 struct Element{
     char *data;
@@ -17,7 +18,6 @@ struct Element{
 */
 struct List{
     Element *head;
-    bool isEmpty;
 };
 /**
 *funkcja @prepare inicjuje liste i ustawia @list->isEmpty 
