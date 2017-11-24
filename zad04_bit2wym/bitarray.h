@@ -9,7 +9,7 @@ struct BitArray{
     int numberOfBitColumns;
 };
 
-void init(BitArray *bit, int columns , int rows);
+void init(BitArray *bit, int rows , int columns);
 
 unsigned int rows(BitArray *bit);
 
@@ -17,11 +17,11 @@ unsigned int cols(BitArray *bit);
 
 void set(BitArray *bit, int row, int column, int value);
 
-void print(BitArray *bit, char *etykieta);
+void print(const BitArray *bit,const char *sign);
 
 void clear(BitArray *bit);
 
-void negate(BitArray *bit);
+BitArray *negate(BitArray *bit);
 
 void xor_arrays(BitArray *bit, const BitArray *b1, const BitArray *b2);
 

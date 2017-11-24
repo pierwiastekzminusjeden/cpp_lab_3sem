@@ -1,22 +1,20 @@
 #include <iostream>
+#include <cstdlib>
 #include "bitarray.h"
-
 
 void init(BitArray *bit, int rows , int columns){
 
     bit->numberOfColumns = columns;
     bit->numberOfRows = rows;
+    bit->numberOfBitColumns = columns / (8*sizeof(char));
+    if(columns % (8*sizeof(char)) != 0)
+        bit->numberOfBitColumns++;
+    bit->tab = (char **)malloc(bit->numberOfRows * sizeof(char *));
 
-    bit->tab = new char * [rows];
-
-    int numberOfBitColumns = columns / (8*sizeof(char));
-    if(numberOfBitColumns % columns != 0)
-        numberOfBitColumns++;
-    bit->numberOfBitColumns = numberOfBitColumns;
-
+    
+    
     for(int i = 0; i < rows; i++)
-        bit->tab[i] = new char [bit->numberOfBitColumns];
-
+        bit->tab[i] = (char *)malloc(bit->numberOfBitColumns*sizeof(char));
 }
 
 unsigned int rows(BitArray *bit){
@@ -41,24 +39,52 @@ void set(BitArray *bit, int row, int column, int value){
     
 }
 
-void print(BitArray *bit, char *etykieta){
-  
-    
+void print(const BitArray *bit, const char *sign){
+    std::cout<< sign <<std::endl;
+    int index;
+    int cell;
+
+    for(unsigned i = 0; i < (bit->numberOfRows); i++){
+        for(unsigned j = 0; j < bit->numberOfColumns; j++){
+            index=j/8;
+            cell=j%8;
+                std::cout<< ((bit->tab[i][index] & (1 << cell))!=0);
+        }
+        std::cout<<std::endl;
+    }
 }
-
-
 
 void clear(BitArray *bit){
     for(int i=0; i < bit->numberOfRows; i++)
-        delete [] bit->tab[i];
-    delete bit->tab;
+         free(bit->tab[i]);
+    free(bit->tab);
     
 }
 
-void negate(BitArray *bit){
+BitArray *negate(BitArray *bit){
+    int index;
+    int cell;
 
+    for(unsigned i = 0; i < (bit->numberOfRows); i++){
+        for(unsigned j = 0; j < bit->numberOfBitColumns; j++){
+            index=j/8;
+            cell=j%8;
+            bit->tab[i][index] = ~(bit->tab[i][index]);
+        }
+    }
+    return bit;
 }
 
 void xor_arrays(BitArray *bit, const BitArray *b1, const BitArray *b2){
-
+    init(bit, b1->numberOfRows, b1->numberOfColumns);
+    
+    int index;
+    int cell;
+    for(unsigned i = 0; i < (bit->numberOfRows); i++){
+        for(unsigned j = 0; j < bit->numberOfBitColumns; j++){
+            index=j/8;
+            cell=j%8;
+            bit->tab[i][index] = (b1->tab[i][index])^(b2->tab[i][index]);
+        }
+    }
 }
