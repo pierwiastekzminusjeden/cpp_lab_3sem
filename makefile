@@ -12,7 +12,7 @@ $(OUTPUT): $(OBJ)
 $(OBJ): $(SRC)
 		$(CXX) $(CXXFLAGS) -c $*.cpp -o $@
 
-.PHONY: clean run backup cB
+.PHONY: clean run copy back val
 
 clean:
 	rm -f $(OUTPUT) $(OBJ)
@@ -21,10 +21,14 @@ run: $(OUTPUT)
 	./$(OUTPUT)
 
 backup:
-	if [ -d "./backup" ]; then rm -r backup; fi
-	mkdir backup
-	cp $(SRC) backup
-	cp *.h backup
+	if [ -d "./copy" ]; then rm -r copy; fi
+	mkdir copy
+	cp $(SRC) copy
+	cp *.h copy
 
 cB:
-	rm -r backup
+	rm -r copy
+
+val:
+    valgrind ./$(OUTPUT)
+

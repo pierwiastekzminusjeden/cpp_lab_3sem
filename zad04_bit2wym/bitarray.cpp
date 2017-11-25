@@ -10,9 +10,6 @@ void init(BitArray *bit, int rows , int columns){
     if(columns % (8*sizeof(char)) != 0)
         bit->numberOfBitColumns++;
     bit->tab = (char **)malloc(bit->numberOfRows * sizeof(char *));
-
-    
-    
     for(int i = 0; i < rows; i++)
         bit->tab[i] = (char *)malloc(bit->numberOfBitColumns*sizeof(char));
 }
@@ -55,9 +52,12 @@ void print(const BitArray *bit, const char *sign){
 }
 
 void clear(BitArray *bit){
+    if(bit->tab == NULL)
+        return;
     for(int i=0; i < bit->numberOfRows; i++)
          free(bit->tab[i]);
     free(bit->tab);
+    bit->tab = NULL;
     
 }
 

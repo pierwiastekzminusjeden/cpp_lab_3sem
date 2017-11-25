@@ -52,7 +52,7 @@ int main() {
   xor_arrays(&b4, (BitArray const*)&b3, (BitArray const*)&b2); // operacja xor na bitach
   print((const BitArray*)&b4, "po operacji XOR");
   
- // clear(&b1); // to nie pomylka, clear jest wykonane dwukrotnie na b1
+  clear(&b1); // to nie pomylka, clear jest wykonane dwukrotnie na b1
   clear(&b2);
   clear(&b3);
   clear(&b4);

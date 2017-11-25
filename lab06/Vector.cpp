@@ -16,6 +16,7 @@ Vector *make_vec(int size){
     for(int i = 0; i < size; i++)
         vec->tab[i] = 0;
     }
+
     return vec;
 }
 
@@ -42,7 +43,6 @@ int size_vec(Vector *vec){
 Vector* from_matrix_row(Matrix* mat, unsigned row){
      Vector *vec = new Vector;
      vec->size = mat->columns * (row);
-
      vec->tab = new int [vec->size];
  
      for(int i = 0; i < vec->size; i++)

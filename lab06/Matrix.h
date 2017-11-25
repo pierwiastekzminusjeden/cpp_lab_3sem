@@ -3,8 +3,12 @@
 
 struct Vector;
 /** 
-*struktura @Matrix jest implementacją tablicy dwuwymiarowej. Przechowuje podstawowe parametry, takie jak rozmiar, liczba wierszy i kolumn, 
-    oraz tablica przechowująca dane.
+* Struktura odzwierciedlająca tablicę dwuwymiarową.
+*
+* @param tab        wskaźnik na tablice jednowymiarową.
+* @param columns    liczba kolumn
+* @param rows       liczba wierszy
+* @size             całkowity rozmiar równy @rows * @columns
 */
 struct Matrix{
     int *tab;
@@ -14,18 +18,27 @@ struct Matrix{
 
 };
 /**
-*Funkcja @make_matrix transformuje zadany wektor integerów na tablicę dwuwymiarową o zadanej liczbie wierszy i kolumn.
-*Alokuje pamiec na strukturę @Matrix oraz tablicę jednowymiarową int o rozmiarze odpowiadającym ilości danych z przekazanego 
-    wektora @Vector. Dane są kopiowane z @Vector do @Matrix.
-
+* Funkcja transformująca wektor integerów na macierz o zadanej liczbie wierszy i kolumn.
+*
+* @param vec        wektor, z którego pobrane zostaną dane do macierzy
+* @param rows       liczba wierszy tworzonej macierzy
+* @param columns    liczba kolumn tworzonej maceirzy
+* @return           utworzona macierz rozmiarów @rows x @columns z danymi pobranymi z @vec
+*
+* Funkcja alokuje pamieć na tablicę dwuwymiarową typu @Matrix.
+* Funkcja alokuje pamięc na tablicę jednowymiarową o rozmiarze @vec.size
 */
 Matrix *make_matrix(Vector *vec, int rows, int columns);
 /**
-*Funkcja @print_matrix wypisuje tablicę dwuwymiarową  typu @Matrix wierszami w nowych liniach.
+* Funkcja wypisuje tablicę dwuwymiarową typu @Matrix wierszami w nowych liniach.
+*
+* @param mat    macierz
 */
 void print_matrix(Matrix *mat);
 /**
-*Funkcja @del_matrix zwalnia pamiec zaalokowana przez funkcje @make_matrix.
+* Funkcja zwalniająca pamiec zaalokowaną przez funkcje @make_matrix.
+*
+* @param mat    macierz
 */ 
 void del_matrix(Matrix *mat);
 

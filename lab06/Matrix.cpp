@@ -20,7 +20,7 @@ void print_matrix(Matrix *mat){
     for(int i = 0; i < mat->size; i++){   
         std::cout << mat->tab[i] << " ";
         if((i+1) % mat->columns == 0)
-        std::cout << std::endl;
+            std::cout << std::endl;
     }
 }
 
