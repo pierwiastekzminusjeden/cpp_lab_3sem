@@ -22,7 +22,7 @@ struct Vector{
 * Funkcja alokuje pamięć na tablicę w strukturze o zadanym rozmiarze @size.
 *
 * @param size   rozmiar tablicy
-* @return       Zwraca wskaźnik na wyzerowany wektor  
+* @return       wskaźnik na wyzerowany wektor  
 */
 Vector *make_vec(int size);
 /**
@@ -48,12 +48,12 @@ int size_vec(Vector *vec);
 /**
 * @biref    Funkcja transformująca zadany wiersz z macierzy na wektor.
 *
+* Funkcja alokuje pamięć na wektor typu @Vector.
+* Funkcja alokuje pamięć na tablicę o rozmiarze @mat.row.
+*
 * @param mat    wskaźnik na zadaną macierz typu @Matrix
 * @param row    wiersz, który ma zostać przetworzony na wektor
 * @return       wskaźnik na wektor typu @Vector o rozmiarze wiersza @mat oraz danymi skopiowanymi z tego wersza
-*
-* Funkcja alokuje pamięć na wektor typu @Vector.
-* Funkcja alokuje pamięć na tablicę o rozmiarze @mat.row.
 */
 Vector* from_matrix_row(Matrix* mat, unsigned row);
 /**
