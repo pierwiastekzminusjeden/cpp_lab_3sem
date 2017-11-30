@@ -2,89 +2,77 @@
 #include <cstdlib>
 #include "bitarray.h"
 
-void init(BitArray *bit, int rows , int columns){
+void init(BitArray *bit, int rows, int columns){
+    bit->nCols = columns;
+    bit->nRows = rows;
+    bit->chCols = columns / (8 * sizeof(char));
+    if (columns % (8 * sizeof(char)) != 0)
+        ++bit->chCols;
 
-    bit->numberOfColumns = columns;
-    bit->numberOfRows = rows;
-    bit->numberOfBitColumns = columns / (8*sizeof(char));
-    if(columns % (8*sizeof(char)) != 0)
-        bit->numberOfBitColumns++;
-    bit->tab = (char **)malloc(bit->numberOfRows * sizeof(char *));
-    for(int i = 0; i < rows; i++)
-        bit->tab[i] = (char *)malloc(bit->numberOfBitColumns*sizeof(char));
+    bit->tab = new char *[bit->nRows] ;
+    for (int i = 0; i < bit->nRows; i++)
+        bit->tab[i] = new char [bit->chCols];
 }
 
 unsigned int rows(BitArray *bit){
-
-    return bit->numberOfRows;
+    return bit->nRows;
 }
 
 unsigned int cols(BitArray *bit){
-
-    return bit->numberOfColumns;
+    return bit->nCols;
 }
 
 void set(BitArray *bit, int row, int column, int value){
-
     int cell = column / (8 * sizeof(char));
-    int position = column % (8 * sizeof(char));
+    int bitPos = column % (8 * sizeof(char));
 
-    if(value)
-        bit->tab[row][cell] =  bit->tab[row][cell] | (1<<position);
+    if (value)
+        bit->tab[row][cell] = bit->tab[row][cell] | (1 << bitPos);
     else
-        bit->tab[row][cell] =  bit->tab[row][cell] & ~(1<<position);
-    
+        bit->tab[row][cell] = bit->tab[row][cell] & ~(1 << bitPos);
 }
 
-void print(const BitArray *bit, const char *sign){
-    std::cout<< sign <<std::endl;
-    int index;
+void print(const BitArray *bit, const char *comment){
+    std::cout << comment << std::endl;
     int cell;
+    int bitPos;
 
-    for(unsigned i = 0; i < (bit->numberOfRows); i++){
-        for(unsigned j = 0; j < bit->numberOfColumns; j++){
-            index=j/8;
-            cell=j%8;
-                std::cout<< ((bit->tab[i][index] & (1 << cell))!=0);
+    for (int i = 0; i < (bit->nRows); i++){
+        for (int j = 0; j < bit->nCols; j++){
+            cell = j / (8 * sizeof(char));
+            bitPos = j % (8 * sizeof(char));
+            std::cout << ((bit->tab[i][cell] & (1 << bitPos)) != 0);
         }
-        std::cout<<std::endl;
+        std::cout << std::endl;
     }
 }
 
 void clear(BitArray *bit){
-    if(bit->tab == NULL)
+    if(bit->nRows == 0)
         return;
-    for(int i=0; i < bit->numberOfRows; i++)
-         free(bit->tab[i]);
-    free(bit->tab);
-    bit->tab = NULL;
-    
+
+    for (int i = 0; i < bit->nRows; i++)
+        delete [] bit->tab[i];
+    delete [] bit->tab;
+
+    bit->nRows = 0;
+    bit->nCols = 0;
 }
 
-BitArray *negate(BitArray *bit){
-    int index;
-    int cell;
-
-    for(unsigned i = 0; i < (bit->numberOfRows); i++){
-        for(unsigned j = 0; j < bit->numberOfBitColumns; j++){
-            index=j/8;
-            cell=j%8;
-            bit->tab[i][index] = ~(bit->tab[i][index]);
+BitArray *negate(BitArray *bit){  
+    for (int i = 0; i < (bit->nRows); i++){
+        for (int j = 0; j < bit->nCols; j++){  
+            char(bit->tab[i][j]) = ~bit->tab[i][j];
         }
     }
     return bit;
 }
 
 void xor_arrays(BitArray *bit, const BitArray *b1, const BitArray *b2){
-    init(bit, b1->numberOfRows, b1->numberOfColumns);
-    
-    int index;
-    int cell;
-    for(unsigned i = 0; i < (bit->numberOfRows); i++){
-        for(unsigned j = 0; j < bit->numberOfBitColumns; j++){
-            index=j/8;
-            cell=j%8;
-            bit->tab[i][index] = (b1->tab[i][index])^(b2->tab[i][index]);
+
+    for (int i = 0; i < (bit->nRows); i++){
+        for (int j = 0; j < bit->chCols; j++){
+            bit->tab[i][j] = (b1->tab[i][j]) ^ (b2->tab[i][j]);
         }
     }
 }

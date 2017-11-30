@@ -3,10 +3,9 @@
 
 struct BitArray{
     char **tab;
-    int numberOfbits;
-    int numberOfRows;
-    int numberOfColumns;
-    int numberOfBitColumns;
+    int nRows;
+    int nCols;
+    int chCols;
 };
 
 void init(BitArray *bit, int rows , int columns);
