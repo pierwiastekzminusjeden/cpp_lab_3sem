@@ -11,7 +11,7 @@
 */
 struct Ext{
     int startSize; //rozszerzanie pamieci
-    int policy;
+    int capacity;   //w dokumentacji policy
     int (*funPolicy)(int);
     int size;
     int *tab;

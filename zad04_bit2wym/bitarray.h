@@ -16,7 +16,7 @@ unsigned int cols(BitArray *bit);
 
 void set(BitArray *bit, int row, int column, int value);
 
-void print(const BitArray *bit,const char *sign);
+void print(const BitArray *bit,const char *comment);
 
 void clear(BitArray *bit);
 

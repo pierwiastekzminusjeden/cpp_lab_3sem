@@ -8,30 +8,30 @@ void init(Ext *vec){
     vec->startSize = 5;
     vec->size = 0;
     vec->funPolicy = NULL;
-    vec->policy=vec->size + vec->startSize; 
-    vec->tab=(int *)malloc(vec->startSize * sizeof(int));
+    vec->capacity = vec->size + vec->startSize; 
+    vec->tab = (int *)malloc(vec->startSize * sizeof(int));
 }
 
 void init_with_size_and_policy(Ext *vec, int start , int (*fun)(int) ){
     vec->startSize = start;
     vec->size = 0;
     vec->funPolicy = fun;
-    vec->policy = start;         
-    vec->tab=(int *)malloc(vec->startSize * sizeof(int));
+    vec->capacity = start;         
+    vec->tab = (int *)malloc(vec->startSize * sizeof(int));
 }
 
 void insert(Ext *vec, int value){  
-    if(vec->size < vec->policy){
+    if(vec->size < vec->capacity){
         vec->tab[vec->size] = value;
         vec->size++;
     }
     else{
         if(vec->funPolicy != NULL)
-            vec->policy = vec->funPolicy(vec->size);
+            vec->capacity = vec->funPolicy(vec->size);
         else
-            vec->policy = vec->size + vec->startSize;
+            vec->capacity = vec->size + vec->startSize;
 
-        vec->tab = (int *)realloc(vec->tab, vec->policy * sizeof(int));
+        vec->tab = (int *)realloc(vec->tab, vec->capacity * sizeof(int));
         
         vec->tab[vec->size] = value;
         vec->size++;
@@ -44,7 +44,7 @@ int size(Ext *vec){
 
 int capacity(Ext *vec){
 
-    return vec->policy;
+    return vec->capacity;
 }
 
 int at(Ext *vec, int value){
@@ -61,8 +61,8 @@ Ext *clone(Ext *vec){
     vecClone->startSize = vec->startSize;        
     vecClone->size = vec->size;
     vecClone->funPolicy = vec->funPolicy;
-    vecClone->policy = vec->policy;
-    vecClone->tab = (int *)malloc(vecClone->policy * sizeof(int) );
+    vecClone->capacity = vec->capacity;
+    vecClone->tab = (int *)malloc(vecClone->capacity * sizeof(int) );
     memcpy(vecClone->tab, vec->tab, vecClone->size);
     
     return vecClone;
