@@ -61,8 +61,8 @@ void clear(BitArray *bit){
 
 BitArray *negate(BitArray *bit){  
     for (int i = 0; i < (bit->nRows); i++){
-        for (int j = 0; j < bit->nCols; j++){  
-            char(bit->tab[i][j]) = ~bit->tab[i][j];
+        for (int j = 0; j < bit->chCols; j++){  
+            bit->tab[i][j] = ~(bit->tab[i][j]);
         }
     }
     return bit;
