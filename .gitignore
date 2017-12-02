@@ -2,3 +2,6 @@ Makefile
 *.o
 *out
 *json
+cmake-build-debug
+CMakeLists.txt
+

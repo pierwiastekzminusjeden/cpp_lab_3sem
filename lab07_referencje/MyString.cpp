@@ -13,14 +13,13 @@ void init(MyString &obj, const char *string){
 }
 
 MyString join(const MyString obj1, const MyString obj2){
-    
     MyString obj;
 
     obj.size = obj1.size + obj2.size;
     obj.str = new char [obj.size];
     strcpy(obj.str, obj1.str);
     strcat(obj.str, obj2.str);
-
+    
     return obj;
 }
 
@@ -46,7 +45,7 @@ void swap(MyString &obj1, MyString &obj2){
 }
 
 void swap(MyString *obj1, MyString *obj2){
-
+    
     MyString *tmp = new MyString;
     
     tmp->size = obj2->size;

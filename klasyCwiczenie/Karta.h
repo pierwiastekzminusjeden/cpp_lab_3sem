@@ -12,7 +12,6 @@ private:
 
 public:
     Karta();
-    void Wypisz();
 
     char *getImie() const;
 
@@ -20,12 +19,11 @@ public:
 
     int getRok() const;
 
-    void setImie(char *imie);
+    void setImie(const char *imie);
 
-    void setNazwisko(char *nazwisko);
+    void setNazwisko(const char *nazwisko);
 
     void setRok(int rok);
+
+    void Wypisz();
 };
-
-
-
