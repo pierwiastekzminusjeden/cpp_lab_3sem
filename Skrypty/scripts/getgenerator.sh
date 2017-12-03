@@ -13,6 +13,6 @@ return $x;
 
    
     touch $classname.h
-    echo "WSTAWTYP$x get$x() const;
+    echo "    WSTAWTYP$x get$x() const;
 ">>"$classname.h"
 done

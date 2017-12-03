@@ -8,7 +8,7 @@ for x in $classnames ; do
     echo "#include <iostream>
 #include \""$x.h"\"
 
-$x::$x(){
+$x(){
 
 }">"$x.cpp"
 

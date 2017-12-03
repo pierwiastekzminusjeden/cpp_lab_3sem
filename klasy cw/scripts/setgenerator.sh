@@ -6,13 +6,13 @@ read bibl
 
 for x in $bibl ; do
     touch $1.cpp
-    echo "//WSTAWTYP$x $1::get$x() const {
-return $x;
+    echo "void $1::set$x(WSTAWTYP$x $x){ 
+this->$x = $x;
 }
 ">>"$1.cpp"
 
-   
     touch $1.h
-    echo "//WSTAWTYP$x get$x() const;
+    echo "void set$x(WSTAWTYP$x $x);
 ">>"$1.h"
+
 done

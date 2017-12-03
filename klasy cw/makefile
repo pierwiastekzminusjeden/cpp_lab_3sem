@@ -1,4 +1,4 @@
-CXX=g++
+CXX=clang++
 CXXFLAGS=-g -Wall
 CXXFLAGS+=-pedantic
 SRC=$(wildcard *.cpp)

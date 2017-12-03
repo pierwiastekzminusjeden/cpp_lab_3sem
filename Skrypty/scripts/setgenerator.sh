@@ -12,7 +12,7 @@ this->$x = $x;
 ">>"$classname.cpp"
 
     touch $classname.h
-    echo "void set$x(WSTAWTYP$x $x);
+    echo "    void set$x(WSTAWTYP$x $x);
 ">>"$classname.h"
 
 done
