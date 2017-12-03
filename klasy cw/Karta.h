@@ -7,7 +7,7 @@ class Karta
   public:
     Karta(string _imie = "brak danych", string _nazwisko = "brak danych", int _rok = 0);
 
-    void wypisz();
+    void wypisz() const;
 
     string &get_imie();
 

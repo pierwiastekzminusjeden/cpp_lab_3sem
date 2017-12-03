@@ -11,7 +11,8 @@
 *Proszę przetestować działanie konstruktora.
 Proszę zmodyfikować funkcję zwracającą imię studenta, tak aby zwracała referencję do pola.
 // NIBY TAK ALE NIE DZIAŁA Proszę sprawdzić w programie, że rzeczywiście zwracana jest referencja.
-Proszę do testów utworzyć stały obiekt reprezentujący kartę studenta np. const Karta superman ("Clark", "Kent", 3); i sprawdzić czy działają funkcje zapewniające odczyt poszczególnych pól klasy oraz funkcja Wypisz. Jeżeli coś nie działa proszę tak zmodyfikować kod, aby działało.
+Proszę do testów utworzyć stały obiekt reprezentujący kartę studenta np. const Karta superman ("Clark", "Kent", 3); i sprawdzić czy działają funkcje zapewniające odczyt poszczególnych pól klasy oraz funkcja Wypisz.
+Jeżeli coś nie działa proszę tak zmodyfikować kod, aby działało.
 Proszę dodać publiczne pole będące referencją do nazwiska, tak aby poniższy kod zmieniał nazwisko zapisane na karcie:
 Karta superman ("Clark", "Kent", 3);
 superman.nazwiskoRef = "Gable";
@@ -32,6 +33,11 @@ int main(){
     Karta k = Karta();
     k.wypisz();
     std::string &imie = k.get_imie();
+
+    const Karta superman("Clark", "Kent", 3);
+    superman.wypisz();
+
     
+
     return 0;
 }

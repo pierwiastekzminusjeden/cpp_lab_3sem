@@ -13,7 +13,7 @@ Karta::Karta(string _imie , string _nazwisko , int _rok)
     this->_rok = _rok;
 }
 
-void Karta::wypisz(){
+void Karta::wypisz() const{
         cout << "To jest klasa" << endl;
         cout << _imie << endl;
         cout << _nazwisko << endl;
