@@ -31,7 +31,7 @@ Proszę zadbać o to, aby nie było wycieków pamięci.
 int main(){
     Karta k = Karta();
     k.wypisz();
-    std::strng &imie = k.get_imie();
+    std::string &imie = k.get_imie();
     
     return 0;
 }

@@ -6,10 +6,10 @@ class Karta
 {
   public:
     Karta(string _imie = "brak danych", string _nazwisko = "brak danych", int _rok = 0);
-    
+
     void wypisz();
 
-    string &get_imie() const;
+    string &get_imie();
 
     string get_nazwisko() const;
 

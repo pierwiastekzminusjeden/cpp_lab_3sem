@@ -20,7 +20,7 @@ void Karta::wypisz(){
         cout << _rok << endl;
 }
 
-string &Karta::get_imie() const {
+string &Karta::get_imie(){
 return _imie;
 }
 
