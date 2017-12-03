@@ -6,30 +6,29 @@ using std::cout;
 using std::string;
 using std::endl;
 
-Karta::Karta(string _imie , string _nazwisko , int _rok)
-{
+Karta::Karta(string _imie, string _nazwisko, int _rok) 
+    : nazwiskoRef(this->_nazwisko) {
     this->_imie = _imie;
-    this->_nazwisko = _imie;
+    this->_nazwisko = _nazwisko;
     this->_rok = _rok;
 }
-
 void Karta::wypisz() const{
         cout << "To jest klasa" << endl;
         cout << _imie << endl;
         cout << _nazwisko << endl;
-        cout << _rok << endl;
+        cout << _rok <<endl;
 }
 
-string &Karta::get_imie(){
-return _imie;
+const string &Karta::get_imie() const{
+    return _imie;
 }
 
 string Karta::get_nazwisko() const {
-return _nazwisko;
+    return _nazwisko;
 }
 
 int Karta::get_rok() const {
-return _rok;
+    return _rok;
 }
 
 void Karta::set_imie(string _imie){ 
