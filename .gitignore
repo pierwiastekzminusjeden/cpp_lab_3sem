@@ -1,7 +1,14 @@
-Makefile
+--------------ŚMIECI----------------
 *.o
 *out
-*json
+
+-------------KATALOGI----------------
 cmake-build-debug
+.vscode
+scripts
+
+------------KOMPILACJA--------------
+Makefile
+makefile
 CMakeLists.txt
 
