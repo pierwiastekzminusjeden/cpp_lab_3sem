@@ -6,8 +6,7 @@ using std::cout;
 using std::string;
 using std::endl;
 
-Karta::Karta(string _imie, string _nazwisko, int _rok) 
-    : nazwiskoRef(this->_nazwisko) {
+Karta::Karta(string _imie, string _nazwisko, int _rok) {
     this->_imie = _imie;
     this->_nazwisko = _nazwisko;
     this->_rok = _rok;
@@ -32,14 +31,14 @@ int Karta::get_rok() const {
 }
 
 void Karta::set_imie(string _imie){ 
-this->_imie = _imie;
+    this->_imie = _imie;
 }
 
 void Karta::set_nazwisko(string _nazwisko){ 
-this->_nazwisko = _nazwisko;
+    this->_nazwisko = _nazwisko;
 }
 
 void Karta::set_rok(int _rok){ 
-this->_rok = _rok;
+    this->_rok = _rok;
 }
 

@@ -1,11 +1,13 @@
 #pragma once
+#include "Kartoteka.h"
+
 using std::string;
 
 class Karta{
-    friend class Kartoteka;
+
+  friend class Kartoteka;
 
 public:
-    string &nazwiskoRef;
 
     Karta(string _imie = "brak danych", string _nazwisko = "brak danych", int _rok = 0);
 

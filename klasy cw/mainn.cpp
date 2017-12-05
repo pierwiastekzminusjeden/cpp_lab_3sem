@@ -16,9 +16,9 @@
 *Proszę dodać publiczne pole będące referencją do nazwiska, tak aby poniższy kod zmieniał nazwisko zapisane na karcie:
 *Karta superman ("Clark", "Kent", 3);
 *superman.nazwiskoRef = "Gable";
-Proszę napisać klasę Kartoteka, przechowującą obiekty typu Karta.
+*Proszę napisać klasę Kartoteka, przechowującą obiekty typu Karta.
 każda kartoteka powinna mieć swoją nazwę i nie powinno dać się utworzyć kartoteki bez nazwy
-kartoteka powinna mieć możliwość dodawania do niej nowych i wypisywania wszystkich znajdujących się w niej kart
+kartoteka powinna mieć możliwość dodawania do niej nowych i //BRAK  wypisywania wszystkich znajdujących się w niej kart
 Proszę zmodyfikować kod aby miał następującą funkcjonalość.
 Obiekty typu Karta powinny przechowywać wskaźnik do obiektu typu Kartoteka do którego została dopisana karta.
 Nie może powstać obiekt typu Karta nieprzypisany do obiektu typu Kartoteka.
@@ -31,7 +31,7 @@ Proszę zadbać o to, aby nie było wycieków pamięci.
 #include "Kartoteka.h"
 
 int main(){
-    Karta k = Karta("Gabi", "Molenda", 2008);       //problem, przy wprowadzeniu jednej wprowadza dwie
+    Karta k = Karta("RAZ", "dwa", 3);       //problem, przy wprowadzeniu jednej wprowadza dwie
     k.wypisz();
     const std::string &imie = k.get_imie();
     std::string nazwisko = k.get_nazwisko();
@@ -44,11 +44,11 @@ int main(){
     std::string supernazwisko = superman.get_nazwisko();
     int superrok = superman.get_rok();
     std::cout << superimie << " " << supernazwisko << " " << superrok << " " << std::endl;
-    superman.nazwiskoRef = "Gable";
     std::cout << superman.get_nazwisko() << std::endl;
 
     Kartoteka kart1 = Kartoteka();
-    kart1.set_karts(&k);
+    kart1.set_karts(k);
+    
 
     return 0;
 }
