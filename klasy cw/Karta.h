@@ -29,5 +29,6 @@ private:
     string _imie;
     string _nazwisko;
     int _rok;
+
 };
 

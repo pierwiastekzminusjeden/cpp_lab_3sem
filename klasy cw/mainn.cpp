@@ -17,9 +17,9 @@
 *Karta superman ("Clark", "Kent", 3);
 *superman.nazwiskoRef = "Gable";
 *Proszę napisać klasę Kartoteka, przechowującą obiekty typu Karta.
-każda kartoteka powinna mieć swoją nazwę i nie powinno dać się utworzyć kartoteki bez nazwy
-kartoteka powinna mieć możliwość dodawania do niej nowych i //BRAK  wypisywania wszystkich znajdujących się w niej kart
-Proszę zmodyfikować kod aby miał następującą funkcjonalość.
+*każda kartoteka powinna mieć swoją nazwę i nie powinno dać się utworzyć kartoteki bez nazwy
+*kartoteka powinna mieć możliwość dodawania do niej nowych i //BRAK  wypisywania wszystkich znajdujących się w niej kart
+*Proszę zmodyfikować kod aby miał następującą funkcjonalość.
 Obiekty typu Karta powinny przechowywać wskaźnik do obiektu typu Kartoteka do którego została dopisana karta.
 Nie może powstać obiekt typu Karta nieprzypisany do obiektu typu Kartoteka.
 Obiekty typu Karta powinno dać się tworzyć poprzez metodę DodajNowaKarta znajdująca się w klasie Kartoteka.
@@ -31,12 +31,7 @@ Proszę zadbać o to, aby nie było wycieków pamięci.
 #include "Kartoteka.h"
 
 int main(){
-    Karta k = Karta("RAZ", "dwa", 3);       //problem, przy wprowadzeniu jednej wprowadza dwie
-    k.wypisz();
-    const std::string &imie = k.get_imie();
-    std::string nazwisko = k.get_nazwisko();
-    int rok = k.get_rok();
-    std::cout << imie << nazwisko << rok << std::endl;
+    
 
     const Karta superman("Clark", "Kent", 3);
     superman.wypisz();
@@ -46,9 +41,16 @@ int main(){
     std::cout << superimie << " " << supernazwisko << " " << superrok << " " << std::endl;
     std::cout << superman.get_nazwisko() << std::endl;
 
-    Kartoteka kart1 = Kartoteka();
-    kart1.set_karts(k);
+    Kartoteka kart1 = Kartoteka("kart1");
     
+    Karta k = Karta("RAZ", "dwa", 3);       //problem, przy wprowadzeniu jednej wprowadza dwie
+    k.wypisz();
+    const std::string &imie = k.get_imie();
+    std::string nazwisko = k.get_nazwisko();
+    int rok = k.get_rok();
+    std::cout << imie << nazwisko << rok << std::endl;
+    kart1.set_karts(k);
+
 
     return 0;
 }

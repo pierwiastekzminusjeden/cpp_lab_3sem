@@ -3,16 +3,20 @@
 
 
 Kartoteka::Kartoteka(){
-
     _karts = NULL;
     _size = 0;
 }
 
 Kartoteka::~Kartoteka(){
-
     delete [] _karts;
     _karts = NULL;
     _size = 0;
+}
+Kartoteka::Kartoteka(std::string nazwa){
+    std::cout << "nazwa Kartoteki to: "<< nazwa << std::endl;
+     _karts = NULL;
+    _size = 0;
+    _nazwa = nazwa;
 }
 
 void Kartoteka::set_karts(Karta &karta){ 
@@ -46,3 +50,7 @@ void Kartoteka::printAll(){
     
     }
 }
+std::string Kartoteka::get_nazwa() const {
+    return _nazwa;
+}
+
