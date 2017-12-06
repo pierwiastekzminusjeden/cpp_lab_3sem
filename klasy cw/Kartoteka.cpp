@@ -40,6 +40,7 @@ void Kartoteka::set_karts(Karta &karta){
         delete[] tmp;
 
         _karts[_size] = karta;
+
     }
 }
 
