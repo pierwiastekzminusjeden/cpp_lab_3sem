@@ -48,7 +48,7 @@
 
 #include <iostream>
 
-//#define ERROR
+#define ERROR
 
 int main()
 {

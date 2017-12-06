@@ -2,9 +2,8 @@
 
 class Fraction;
 
-class FractionArray
-{
-  public:
+class FractionArray{
+public:
     
     FractionArray(int size);
 
@@ -14,8 +13,8 @@ class FractionArray
 
     void Print() const;
 
-
-  private:
+    ~FractionArray();
+private:
     FractionArray();
 
     int _arraySize;
