@@ -10,17 +10,23 @@ for x in $classnames ; do
 
 $x::$x(){
 
+}
+$x::~$x(){
+
 }">"$x.cpp"
 
     touch $x.h
     echo "#pragma once
 
 class $x{
+
 public:
     $x();
 
+    ~$x();
+
 private:
  
- };">"$x.h"
+};">"$x.h"
 	
 done

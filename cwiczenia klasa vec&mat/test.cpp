@@ -41,7 +41,9 @@ int main()
         // wyjecie wektora z kolumny
         vm = m1.extractColumn(1);
     std::cout << vm.at(0) <<" "<< vm.at(1) << " " << vm.at(2) << endl;
+
 }
+
 /* wynik
 0 2 0
 macierz po zmianach 

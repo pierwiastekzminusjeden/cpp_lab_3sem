@@ -12,7 +12,7 @@ Vector::Vector(double value1, double value2, double value3){
 }
 
 double Vector::at(int index) const{
-    
+    return _vec[index];
 }
 
 Vector::~Vector(){

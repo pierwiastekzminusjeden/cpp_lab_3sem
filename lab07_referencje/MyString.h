@@ -44,12 +44,11 @@ void swap(MyString &obj1, MyString &obj2);
 /**
 *@brief     Zamienia wskaźniki na napisy z zadanych struktur miejscami.
 *           Po odczytaniu oryginalnej wartości wynik zostaje taki sam.
-*            !!! Nie działa prawidłowo !!!
 *
 *@param obj1     wskaźnik do pierwszej struktury @MyString 
 *@param obj2     wskaźnik do drugiej struktury @MyString 
 */
-void swap(MyString *obj1, MyString *obj2);
+void swap(MyString *&obj1, MyString *&obj2);
 /**
 *@brief    Zwalnia pamieć która została zaalokowana w strukturach @MyString i 
 *          zeruje ich rozmiar.

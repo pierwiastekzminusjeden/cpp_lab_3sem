@@ -4,9 +4,8 @@ mkdir .vscode
 cd .vscode
 touch tasks.json
 echo '{
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
+    // @author Krystian Molenda
+    "version": "1.0.1",
     "showOutput": "always",
     "type": "shell",
     "echoCommand": true,
