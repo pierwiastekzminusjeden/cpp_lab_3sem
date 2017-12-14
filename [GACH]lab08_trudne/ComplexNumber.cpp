@@ -8,25 +8,29 @@ ComplexNumber::ComplexNumber(int re, int im){
 
     std::cout << "Creating number: ";
     Print();
-    
 }
+
+
 ComplexNumber::~ComplexNumber(){
 
 }
-
 void ComplexNumber::Print() const{
     std::cout << _re << " + " << _im << "i" << std::endl;
 }
 
-void ComplexNumber::Save(Register &reg)
-{
+void ComplexNumber::Save(Register &reg){
 
-} //todo
+
+}
 
 ComplexNumber &ComplexNumber::SetReal(int re){
+    _re = re;
+    return *(this);
 }
 
 ComplexNumber &ComplexNumber::SetImaginary(int im){
+    _im = im;
+    return *(this);
 }
 
 ComplexNumber &ComplexNumber::Add(ComplexNumber &toAdd) const{

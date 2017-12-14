@@ -7,8 +7,9 @@ class ComplexNumber
 
   public:
     ComplexNumber(int re = 0, int im = 0);
-
+    
     ~ComplexNumber();
+    
 
     void Print() const;
 

@@ -31,8 +31,10 @@ void Register::Write(ComplexNumber &num){
 }
 
 ComplexNumber &Register::Read() const{
-
+    ComplexNumber *toRet =new ComplexNumber(this->_re, this->_im);
+    return *toRet;
 }
 
  void Register::Clear(){
+     
 }
