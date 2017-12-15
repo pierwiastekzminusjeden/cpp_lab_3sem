@@ -2,37 +2,39 @@
 #include "Register.h"
 #include "ComplexNumber.h"
 
-Register::Register(int re, int im){
-    _im = im;
-    _re = re;
+Register * Register::_instance = NULL;
+ComplexNumber * Register::_complexNumber = NULL;    //o co tu chodzi?
+
+Register::Register(){
+
 }
 Register::~Register(){
 
 }
 
 Register &Register::Retrieve(){
-    Register *reg = new Register();
-    std::cout << "Creating Register" <<std::endl;
-    return *reg;
+    if(_instance == NULL){
+        _instance = new Register;
+        std::cout << "Creating Register" <<std::endl;
+    }
+    return *_instance;
 }
 
 void Register::Print() const{
-    if(_im == 0 && _re == 0)
+    if(_instance == NULL)
         std::cout << "Register is empty" << std::endl;
     else{
-        std::cout << "Register stores number: ";
-        std::cout << _re << " + " << _im << "i" << std::endl;
+        std::cout <<"Register stores number: ";
+        _complexNumber->Print();
     }
 }
 
-void Register::Write(ComplexNumber &num){
-    _im = num.GetImaginary();
-    _re = num.GetReal();
+void Register::Write(const ComplexNumber &num){
+   
 }
 
 ComplexNumber &Register::Read() const{
-    ComplexNumber *toRet =new ComplexNumber(this->_re, this->_im);
-    return *toRet;
+    return *_complexNumber;
 }
 
  void Register::Clear(){

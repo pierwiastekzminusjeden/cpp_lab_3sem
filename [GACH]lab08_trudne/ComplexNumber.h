@@ -5,15 +5,14 @@ class Register;
 class ComplexNumber
 {
 
-  public:
+public:
     ComplexNumber(int re = 0, int im = 0);
     
     ~ComplexNumber();
     
-
     void Print() const;
 
-    void Save(Register &reg); //todo
+    void Save(Register &reg) const; //todo
 
     ComplexNumber &SetReal(int re);
 
@@ -23,9 +22,7 @@ class ComplexNumber
 
     int GetImaginary() const;
 
-    ComplexNumber &Add(ComplexNumber &toAdd) const;
-
-    void Clear();
+    ComplexNumber Add(const ComplexNumber &toAdd) const;
 
 private:
     int _im;

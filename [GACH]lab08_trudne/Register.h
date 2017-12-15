@@ -2,12 +2,9 @@
 
 class ComplexNumber;
 
-class Register
-{
+class Register{
 
-  public:
-
-    Register(int re =0, int im = 0);
+public:
 
     ~Register();
 
@@ -17,11 +14,15 @@ class Register
 
     void Print() const;
 
-    void Write(ComplexNumber &num);
+    void Write(const ComplexNumber &num);
 
-    ComplexNumber &Read() const;
+    ComplexNumber &Read() const; //zwraca kopie
 
 private:
-    int _im;
-    int _re;
+    Register();
+
+    static Register *_instance;
+
+    static ComplexNumber *_complexNumber;
+
 };
