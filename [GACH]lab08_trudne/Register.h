@@ -5,7 +5,6 @@ class ComplexNumber;
 class Register{
 
 public:
-
     ~Register();
 
     static Register &Retrieve();
@@ -16,7 +15,7 @@ public:
 
     void Write(const ComplexNumber &num);
 
-    ComplexNumber &Read() const; //zwraca kopie
+    ComplexNumber Read() const; 
 
 private:
     Register();

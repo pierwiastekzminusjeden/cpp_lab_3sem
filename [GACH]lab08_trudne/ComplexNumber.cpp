@@ -2,21 +2,24 @@
 #include "ComplexNumber.h"
 #include "Register.h"
 
+ComplexNumber::~ComplexNumber(){
+    std::cout << "Deleting: " ;
+    Print();
+}
+
+
 ComplexNumber::ComplexNumber(int re, int im){
     _re = re;
     _im = im;
 
-    std::cout << "Creating number: ";
-    Print();
-}
-
-ComplexNumber::~ComplexNumber(){
-
+    if(re != 0 || im != 0){
+        std::cout << "Creating number: ";
+        Print();
+    }
 }
 
 void ComplexNumber::Print() const{
     std::cout << _re << " + " << _im << "i" << std::endl;
-
 }
 
 void ComplexNumber::Save(Register &reg) const{
@@ -34,7 +37,7 @@ ComplexNumber &ComplexNumber::SetImaginary(int im){
 }
 
 ComplexNumber ComplexNumber::Add(const ComplexNumber &toAdd) const{
-    return ComplexNumber(toAdd.GetReal() + _re, toAdd.GetImaginary() + _im );
+    return ComplexNumber(toAdd.GetReal() + this->_re, toAdd.GetImaginary() + this->_im );
 }
 
 int ComplexNumber::GetReal() const {
