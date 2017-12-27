@@ -29,9 +29,8 @@ void Register::Print() const{
 }
 
 void Register::Write(const ComplexNumber &num){
-   if(_instance == NULL)
-       return;
-   _complexNumber = new ComplexNumber();
+   if(_complexNumber == NULL)
+        _complexNumber = new ComplexNumber();
    *_complexNumber = num;
 }
 
