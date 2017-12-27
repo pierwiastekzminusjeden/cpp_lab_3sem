@@ -41,7 +41,7 @@ ComplexNumber Register::Read() const{
 
  void Register::Clear(){
     if(_complexNumber != NULL){
-        _complexNumber->~ComplexNumber();
+        delete _complexNumber;
         _complexNumber = NULL;
     }
     if(_instance != NULL){
