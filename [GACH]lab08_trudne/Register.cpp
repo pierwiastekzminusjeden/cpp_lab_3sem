@@ -8,6 +8,7 @@ ComplexNumber * Register::_complexNumber = NULL;
 Register::Register(){
     _instance = this;
 }
+
 Register::~Register(){
 }
 
