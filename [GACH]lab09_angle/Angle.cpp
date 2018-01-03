@@ -5,8 +5,10 @@
 Angle::Angle(double rad){
     _rad = rad;
 }
+
 Angle::~Angle(){
 }
+
 const Angle Angle::fromRadians(double rad){
     Angle toRet = Angle(rad);
     toRet.less();
