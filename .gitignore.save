@@ -1,0 +1,13 @@
+--------------ŚMIECI----------------
+*.o
+*out
+
+-------------KATALOGI----------------
+cmake-build-debug
+.vscode
+scr
+------------KOMPILACJA--------------
+Makefile
+makefile
+CMakeLists.txt
+
